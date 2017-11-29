@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 # neurovault Package: 
-The goal of `neurovault` is to provide uses 'Neurovault 'API'
+The goal of `neurovault` is to provide access to the Neurovault API (https://neurovault.org/api-docs) to download statistical maps of the human brain stored on that platform.
 
 ## Installation
 

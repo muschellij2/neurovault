@@ -1,0 +1,46 @@
+---
+title: "Neurovault API"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Neurovault API}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+The NeuroVault database (https://neurovault.org/) is a:
+> place where researchers can publicly store and share unthresholded statistical maps, parcellations, and atlases produced by MRI and PET studies.
+
+This allows researchers to compare results from multiple studies.
+
+The NeuroVault API (https://neurovault.org/api-docs) allows users to access this data with some calls to a RESTful API.
+
+The `neurovault` package wraps these commands using `httr`.   Here we will look
+
+```{r}
+library(neurovault)
+res = nv_collection_images(id = 77)
+df = results_to_df(res$content$results)
+head(df)
+```
+
+
+## Atlases
+
+We can download and view a labeled atlas for the results:
+
+```{r}
+library(neurobase)
+res = download_nv_atlas(id = 1408)
+atlas = readnii(res$outfile[1])
+ortho2(atlas)
+```

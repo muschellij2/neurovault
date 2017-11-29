@@ -1,7 +1,7 @@
 Package: neurovault
 Version: 0.4.1
-Title: Neurovault Database API Interface
-Description: Uses 'Neurovault 'API' <https://neurovault.org/api-docs> to 
+Title: Neurovault Database API Access in R
+Description: Uses 'Neurovault' 'API' <https://neurovault.org/api-docs> to 
       download statistical maps of the human brain stored on that platform.
 Authors@R: structure(list(structure(list(given = "John", family = "Muschelli", 
         role = c("aut", "cre"), email = "muschellij2@gmail.com", 
@@ -14,7 +14,8 @@ Suggests:
     knitr,
     rmarkdown,
     covr,
-    testthat
+    testthat,
+    neurobase
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true
