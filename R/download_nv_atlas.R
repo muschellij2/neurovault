@@ -47,6 +47,8 @@ nv_atlas = function(
 
 #' @rdname nv_atlas
 #' @export
+#' @examples
+#' nv_atlas_names()
 nv_atlas_names = function(...) {
   res = nv_atlas(id = NULL, ...)
   df = results_to_df(res$content$results)
@@ -55,6 +57,8 @@ nv_atlas_names = function(...) {
 
 #' @rdname nv_atlas
 #' @export
+#' @examples
+#' nv_atlas_df()
 nv_atlas_df = function(verbose = TRUE, ...) {
   res = nv_atlas(id = NULL, ...)
   df = results_to_df(res$content$results)

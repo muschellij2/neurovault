@@ -32,4 +32,6 @@ to each atlas stored in NeuroVault.
 \examples{
 res = nv_atlas()
 df = results_to_df(res$content$results)
+nv_atlas_names()
+nv_atlas_df()
 }

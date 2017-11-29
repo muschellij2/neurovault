@@ -10,6 +10,8 @@
 #' @param id id of the collection
 #' @param secure passed to \code{\link{nv_base_url}} for https
 #' @param verbose print diagnostic messages
+#' @param max_count Maximum count of records to call, the number of records
+#' may be larger than this based on how the limits are set for API calls
 #' @param ... additional options to pass to \code{\link{GET}}
 #'
 #' @note See \url{https://neurovault.org/api-docs}
@@ -24,6 +26,7 @@
 #' res = nv_collection(name = "21 pain studies (NIDM-Results)")
 #' res = nv_collection(id = 77)
 #' res = nv_collection(id = 77, doi = "10.1016/j.neurobiolaging.2012.11.002")
+#' res = nv_collection(max_count = 300)
 #'
 nv_collection = function(
   id = NULL,
@@ -32,6 +35,7 @@ nv_collection = function(
   name = NULL,
   verbose = TRUE,
   secure = TRUE,
+  max_count = Inf,
   ...) {
 
   query = list()
@@ -70,6 +74,12 @@ nv_collection = function(
   res = L$response
   cr = L$content
 
+  cr = append_results(
+    content = cr,
+    verbose = verbose,
+    query = query,
+    max_count = max_count,
+    ...)
   # different output with collections/id
   if (!null_id & null_query) {
     cr = list(results = list(cr))

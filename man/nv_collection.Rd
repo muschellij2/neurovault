@@ -5,7 +5,7 @@
 \title{Neurovault Collections}
 \usage{
 nv_collection(id = NULL, doi = NULL, owner = NULL, name = NULL,
-  verbose = TRUE, secure = TRUE, ...)
+  verbose = TRUE, secure = TRUE, max_count = Inf, ...)
 }
 \arguments{
 \item{id}{id of the collection}
@@ -19,6 +19,9 @@ nv_collection(id = NULL, doi = NULL, owner = NULL, name = NULL,
 \item{verbose}{print diagnostic messages}
 
 \item{secure}{passed to \code{\link{nv_base_url}} for https}
+
+\item{max_count}{Maximum count of records to call, the number of records
+may be larger than this based on how the limits are set for API calls}
 
 \item{...}{additional options to pass to \code{\link{GET}}}
 }
@@ -39,5 +42,6 @@ res = nv_collection(doi = "10.1016/j.neurobiolaging.2012.11.002")
 res = nv_collection(name = "21 pain studies (NIDM-Results)")
 res = nv_collection(id = 77)
 res = nv_collection(id = 77, doi = "10.1016/j.neurobiolaging.2012.11.002")
+res = nv_collection(max_count = 300)
 
 }
