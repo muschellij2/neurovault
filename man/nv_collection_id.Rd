@@ -26,5 +26,7 @@ Retrieve Neurovault Collections ID
 }
 \examples{
 id = nv_collection_id(name = "FeatureX IAPS Test")
+\dontrun{
 id = nv_collection_id(doi = "10.1016/BAD_ID")
+}
 }

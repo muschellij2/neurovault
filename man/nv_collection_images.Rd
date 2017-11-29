@@ -28,7 +28,8 @@ See \url{https://neurovault.org/api-docs}
 \examples{
 res = nv_collection_images(id = 77)
 df = results_to_df(res$content$results)
-
+\dontrun{
 id = nv_collection_id(name = "FeatureX IAPS Test")
 imgs = nv_collection_images(id = id)
+}
 }

@@ -26,7 +26,7 @@
 #' res = nv_collection(name = "21 pain studies (NIDM-Results)")
 #' res = nv_collection(id = 77)
 #' res = nv_collection(id = 77, doi = "10.1016/j.neurobiolaging.2012.11.002")
-#' res = nv_collection(max_count = 300)
+#' res = nv_collection(max_count = 100)
 #'
 nv_collection = function(
   id = NULL,
