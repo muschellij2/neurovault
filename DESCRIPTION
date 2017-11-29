@@ -1,7 +1,7 @@
 Package: neurovault
-Version: 0.5.1
-Title: 'Neurovault' Database API Access in R
-Description: Uses 'Neurovault' API <https://neurovault.org/api-docs> to 
+Version: 0.5.2
+Title: 'Neurovault' Database 'API' Access in R
+Description: Uses 'Neurovault' 'API' <https://neurovault.org/api-docs> to 
       download statistical maps of the human brain stored on that platform.
 Authors@R: person(given = "John", family = "Muschelli", 
         role = c("aut", "cre"), email = "muschellij2@gmail.com")

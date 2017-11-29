@@ -57,6 +57,7 @@ nv_collection = function(
   if (!null_id & !null_query) {
     warning("ID and doi/owner/name specified, ID will be used, others ignored")
     query = list()
+    null_query = TRUE
   }
 
   url = nv_base_url(secure = secure)
