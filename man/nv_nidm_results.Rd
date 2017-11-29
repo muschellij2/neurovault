@@ -25,7 +25,7 @@ Returns a list of dictionaries with information
 corresponding to each nidm_results stored in NeuroVault.
 }
 \examples{
-#' \dontrun{
+\dontrun{
 nidm = nv_nidm_results(max_count = 100)
 # df = results_to_df(nidm$content$results)
 nidm = nv_nidm_results()
