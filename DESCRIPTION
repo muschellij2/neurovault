@@ -1,5 +1,5 @@
 Package: neurovault
-Version: 0.1.0
+Version: 0.2.0
 Title: Neurovault Database API Interface
 Description: Uses 'Neurovault 'API' <https://neurovault.org/api-docs> to 
       download statistical maps of the human brain stored on that platform.

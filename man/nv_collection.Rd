@@ -5,7 +5,7 @@
 \title{Neurovault Collections}
 \usage{
 nv_collection(id = NULL, doi = NULL, owner = NULL, name = NULL,
-  images = FALSE, verbose = TRUE, secure = TRUE, ...)
+  verbose = TRUE, secure = TRUE, ...)
 }
 \arguments{
 \item{id}{id of the collection}

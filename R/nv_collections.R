@@ -30,7 +30,6 @@ nv_collection = function(
   doi = NULL,
   owner = NULL,
   name = NULL,
-  images = FALSE,
   verbose = TRUE,
   secure = TRUE,
   ...) {

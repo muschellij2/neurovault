@@ -1,8 +1,10 @@
-#' Neurovault Collections Images
+#' Neurovault Images
 #'
 #' @param id id of the collection
 #' @param secure passed to \code{\link{nv_base_url}} for https
 #' @param verbose print diagnostic messages
+#' @param limit Limit of number of images to return
+#' @param offset where to start
 #' @param ... additional options to pass to \code{\link{GET}}
 #'
 #' @note See \url{https://neurovault.org/api-docs}
@@ -13,58 +15,30 @@
 #'
 #' @importFrom httr GET
 #' @examples
-#' res = nv_collection_images(id = 77)
-#' df = results_to_df(res$content$results)
 #'
-#' id = nv_collection_id(name = "FeatureX IAPS Test")
-#' imgs = nv_collection_images(id = id)
-nv_collection_images = function(
-  id,
+nv_images = function(
+  id = NULL,
   verbose = TRUE,
   secure = TRUE,
+  limit = 100,
+  offset = 0,
   ...) {
 
   url = nv_base_url(secure = secure)
-  path = "/collections"
-  path = paste0(path, "/", id, "/", "images")
+  path = "/images"
+  path = paste0(path, "/", id)
   url = paste0(url, path)
 
-  res = httr::GET(url, ...)
+  query = list()
+  query$limit = limit
+  query$offset = offset
+  res = httr::GET(url, query = query, ...)
   if (verbose) {
     message("GET command is:")
     print(res)
   }
   httr::stop_for_status(res)
   cr = httr::content(res)
-
-  get_results = function(url) {
-    res = httr::GET(url, ...)
-    if (verbose) {
-      message("GET command is:")
-      print(res)
-    }
-    httr::stop_for_status(res)
-    cr = httr::content(res)
-    return(cr)
-  }
-  count = cr$count
-  n_res = length(cr$results)
-  if (count > n_res) {
-    if (verbose) {
-      msg = "Multiple pages must be called - more results than 1 call"
-      message(msg)
-    }
-  }
-  next_url = cr$`next`
-  while (!is.null(next_url)) {
-    next_cr = get_results(url = next_url)
-    cr$results = c(cr$results, next_cr$results)
-    next_url = next_cr$`next`
-  }
-  n_res = length(cr$results)
-  if (count > n_res) {
-      warning("Not all records received, may be a problem with the call")
-  }
 
   L = list(
     response = res,
