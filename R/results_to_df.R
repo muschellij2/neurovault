@@ -1,4 +1,4 @@
-#' Results Output to a \code{data.frame}
+#' Convert Neurovault results output to a \code{data.frame}
 #'
 #' @param results Results list from the content of a \code{nv} command
 #'
@@ -18,6 +18,12 @@ results_to_df = function(results) {
   }
   df = lapply(results, function(x) {
     x = lapply(x, nonull)
+    if ("statmaps" %in% names(x)) {
+      x$statmaps = lapply(x$statmaps, function(r) {
+        r = lapply(r, nonull)
+        r = as.data.frame(r, stringsAsFactors = FALSE)
+      })
+    }
     x = as.data.frame(x, stringsAsFactors = FALSE)
   })
   df = bind_list(df)

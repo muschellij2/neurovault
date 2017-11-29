@@ -56,7 +56,7 @@ append_results = function(
     }
   }
   next_url = content$`next`
-  while (!is.null(next_url) && n_res <= max_count) {
+  while (!is.null(next_url) && n_res < max_count) {
     next_gr = get_results(
       url = next_url,
       query = query,
@@ -69,7 +69,7 @@ append_results = function(
     next_url = next_cr$`next`
   }
   n_res = length(content$results)
-  if (count > n_res) {
+  if (count > n_res && max_count > n_res) {
     warning("Not all records received, may be a problem with the call")
   }
   return(content)

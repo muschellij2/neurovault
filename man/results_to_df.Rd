@@ -2,7 +2,7 @@
 % Please edit documentation in R/results_to_df.R
 \name{results_to_df}
 \alias{results_to_df}
-\title{Results Output to a \code{data.frame}}
+\title{Convert Neurovault results output to a \code{data.frame}}
 \usage{
 results_to_df(results)
 }
@@ -13,7 +13,7 @@ results_to_df(results)
 A \code{data.frame} of the output
 }
 \description{
-Results Output to a \code{data.frame}
+Convert Neurovault results output to a \code{data.frame}
 }
 \examples{
 res = nv_collection(doi = "10.1016/j.neurobiolaging.2012.11.002")

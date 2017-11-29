@@ -11,7 +11,8 @@ nv_all_images(verbose = TRUE, secure = TRUE, max_count = 300, ...)
 
 \item{secure}{passed to \code{\link{nv_base_url}} for https}
 
-\item{max_count}{Maximum count of records to call}
+\item{max_count}{Maximum count of records to call, the number of records
+may be larger than this based on how the limits are set for API calls}
 
 \item{...}{additional options to pass to \code{\link{GET}}}
 }
@@ -26,7 +27,6 @@ All Neurovault Images
 See \url{https://neurovault.org/api-docs}
 }
 \examples{
-\dontrun{
-images = nv_all_images()
-}
+images = nv_all_images(max_count = 100)
+df = results_to_df(images$content$results)
 }

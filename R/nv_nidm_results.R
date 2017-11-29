@@ -5,7 +5,8 @@
 #'
 #' @param secure passed to \code{\link{nv_base_url}} for https
 #' @param verbose print diagnostic messages
-#' @param max_count Maximum count of records to call
+#' @param max_count Maximum count of records to call, the number of records
+#' may be larger than this based on how the limits are set for API calls
 #' @param ... additional options to pass to \code{\link{GET}}
 #'
 #' @return List of the result of the \code{\link{GET}} call and
@@ -13,7 +14,9 @@
 #' @export
 #'
 #' @examples \dontrun{
-#' images = nv_nidm_results()
+#' nidm = nv_nidm_results()
+#' df = results_to_df(nidm$content$results)
+#'
 #' }
 nv_nidm_results = function(
   verbose = TRUE,

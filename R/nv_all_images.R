@@ -2,7 +2,8 @@
 #'
 #' @param secure passed to \code{\link{nv_base_url}} for https
 #' @param verbose print diagnostic messages
-#' @param max_count Maximum count of records to call
+#' @param max_count Maximum count of records to call, the number of records
+#' may be larger than this based on how the limits are set for API calls
 #' @param ... additional options to pass to \code{\link{GET}}
 #'
 #' @note See \url{https://neurovault.org/api-docs}
@@ -12,9 +13,9 @@
 #' @export
 #'
 #' @importFrom httr GET
-#' @examples \dontrun{
-#' images = nv_all_images()
-#' }
+#' @examples
+#' images = nv_all_images(max_count = 100)
+#' df = results_to_df(images$content$results)
 nv_all_images = function(
   verbose = TRUE,
   secure = TRUE,

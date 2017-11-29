@@ -11,7 +11,8 @@ nv_nidm_results(verbose = TRUE, secure = TRUE, max_count = Inf, ...)
 
 \item{secure}{passed to \code{\link{nv_base_url}} for https}
 
-\item{max_count}{Maximum count of records to call}
+\item{max_count}{Maximum count of records to call, the number of records
+may be larger than this based on how the limits are set for API calls}
 
 \item{...}{additional options to pass to \code{\link{GET}}}
 }
@@ -25,6 +26,8 @@ corresponding to each nidm_results stored in NeuroVault.
 }
 \examples{
 \dontrun{
-images = nv_nidm_results()
+nidm = nv_nidm_results()
+df = results_to_df(nidm$content$results)
+
 }
 }
