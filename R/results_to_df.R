@@ -21,5 +21,5 @@ results_to_df = function(results) {
     x = as.data.frame(x, stringsAsFactors = FALSE)
   })
   df = bind_list(df)
-
+  return(df)
 }

@@ -1,6 +1,5 @@
-#' Neurovault Collections Images
+#' Neurovault Images
 #'
-#' @param id id of the collection
 #' @param secure passed to \code{\link{nv_base_url}} for https
 #' @param verbose print diagnostic messages
 #' @param ... additional options to pass to \code{\link{GET}}
@@ -12,37 +11,32 @@
 #' @export
 #'
 #' @importFrom httr GET
-#' @examples
-#' res = nv_collection_images(id = 77)
-#' df = results_to_df(res$content$results)
-#'
-#' id = nv_collection_id(name = "FeatureX IAPS Test")
-#' imgs = nv_collection_images(id = id)
-nv_collection_images = function(
-  id,
+#' @examples \dontrun{
+#' images = nv_all_images()
+#' }
+nv_all_images = function(
   verbose = TRUE,
   secure = TRUE,
   ...) {
 
   url = nv_base_url(secure = secure)
-  path = "/collections"
-  path = paste0(path, "/", id, "/", "images")
+  path = "/images"
+  path = path
   url = paste0(url, path)
   query = list()
 
-  gr = get_results(url, query = query,
-                   verbose = verbose, ...)
-  res = gr$response
-  cr = gr$content
-  rm(list = "gr")
+
+  L = get_results(
+    url, query = query,
+    verbose = verbose, ...)
+  res = L$response
+  cr = L$content
 
   cr = append_results(content = cr, verbose = verbose,
                       query = query, ...)
-
   L = list(
     response = res,
     content = cr)
   return(L)
 }
-
 

@@ -20,3 +20,45 @@ bind_list = function(L) {
   L = do.call("rbind", L)
   return(L)
 }
+
+
+get_results = function(url, query = list(), verbose = TRUE, ...) {
+  res = httr::GET(url, query = query, ...)
+  if (verbose) {
+    message("GET command is:")
+    print(res)
+  }
+  httr::stop_for_status(res)
+  cr = httr::content(res)
+  return(list(response = res, content = cr))
+}
+
+append_results = function(
+  content,
+  query = list(), verbose = TRUE, ...) {
+  count = content$count
+  n_res = length(content$results)
+  if (is.null(count)) {
+    count = n_res
+  }
+  if (count > n_res) {
+    if (verbose) {
+      msg = "Multiple pages must be called - more results than 1 call"
+      message(msg)
+    }
+  }
+  next_url = content$`next`
+  while (!is.null(next_url)) {
+    next_gr = get_results(url = next_url,
+                          query = query, verbose = verbose, ...)
+    next_cr = next_gr$content
+    content$results = c(content$results, next_cr$results)
+    rm(list = "next_gr")
+    next_url = next_cr$`next`
+  }
+  n_res = length(content$results)
+  if (count > n_res) {
+    warning("Not all records received, may be a problem with the call")
+  }
+  return(content)
+}

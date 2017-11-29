@@ -64,13 +64,11 @@ nv_collection = function(
 
   query = lapply(query, as.character)
 
-  res = httr::GET(url, query = query, ...)
-  if (verbose) {
-    message("GET command is:")
-    print(res)
-  }
-  httr::stop_for_status(res)
-  cr = httr::content(res)
+  L = get_results(
+    url, query = query,
+    verbose = verbose, ...)
+  res = L$response
+  cr = L$content
 
   # different output with collections/id
   if (!null_id & null_query) {
