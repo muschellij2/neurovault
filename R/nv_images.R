@@ -17,6 +17,8 @@
 #' @importFrom httr GET
 #' @examples
 #' images = nv_images(id = 8719)
+#' # same as nv_all_images, but won't loop over all cases
+#' images = nv_images(limit = 10, offset = 0)
 nv_images = function(
   id = NULL,
   verbose = TRUE,

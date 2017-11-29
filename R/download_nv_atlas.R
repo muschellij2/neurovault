@@ -21,7 +21,6 @@ nv_atlas = function(
   id = NULL,
   verbose = TRUE,
   secure = TRUE,
-  get_collection_info = FALSE,
   ...) {
 
   url = nv_base_url(secure = secure)

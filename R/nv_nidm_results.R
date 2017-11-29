@@ -13,10 +13,11 @@
 #' the content
 #' @export
 #'
-#' @examples \dontrun{
-#' nidm = nv_nidm_results()
+#' @examples
+#' nidm = nv_nidm_results(max_count = 100)
 #' df = results_to_df(nidm$content$results)
-#'
+#' \dontrun{
+#' nidm = nv_nidm_results()
 #' }
 nv_nidm_results = function(
   verbose = TRUE,
@@ -38,6 +39,7 @@ nv_nidm_results = function(
   L$content = append_results(
     content = L$content,
     verbose = verbose,
+    max_count = max_count,
     query = query, ...)
 
   return(L)

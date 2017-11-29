@@ -34,7 +34,7 @@ Returns the corresponding to the X, Y and Z coordinates,
  respectively, of the matching voxels. Coordinates are in mm in MNI space.
 }
 \examples{
-res = nv_atlas_query_region(
+res = nv_atlas_region(
 region = "middle frontal gyrus",
 collection_name = "Harvard-Oxford cortical and subcortical structural atlases",
 atlas_name = "HarvardOxford cort maxprob thr25 1mm")

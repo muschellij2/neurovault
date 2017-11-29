@@ -6,8 +6,7 @@
 \alias{nv_atlas_df}
 \title{Neurovault Atlases}
 \usage{
-nv_atlas(id = NULL, verbose = TRUE, secure = TRUE,
-  get_collection_info = FALSE, ...)
+nv_atlas(id = NULL, verbose = TRUE, secure = TRUE, ...)
 
 nv_atlas_names(...)
 
