@@ -44,3 +44,13 @@ res = download_nv_atlas(id = 1408)
 atlas = readnii(res$outfile[1])
 ortho2(atlas)
 ```
+
+
+## NIDM Results
+
+You can access the neuroimaging data model (NIDM) (http://nidm.nidash.org/) information using:
+
+```{r}
+nidm = nv_nidm_results()
+```
+
