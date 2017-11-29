@@ -22,20 +22,28 @@ bind_list = function(L) {
 }
 
 
-get_results = function(url, query = list(), verbose = TRUE, ...) {
+get_results = function(
+  url, query = list(),
+  verbose = TRUE, nonstop = FALSE, ...) {
   res = httr::GET(url, query = query, ...)
   if (verbose) {
     message("GET command is:")
     print(res)
   }
-  httr::stop_for_status(res)
+  if (!nonstop) {
+    httr::stop_for_status(res)
+  } else {
+    httr::warn_for_status(res)
+  }
+
   cr = httr::content(res)
   return(list(response = res, content = cr))
 }
 
 append_results = function(
   content,
-  query = list(), verbose = TRUE, ...) {
+  query = list(),
+  verbose = TRUE, max_count = Inf, ...) {
   count = content$count
   n_res = length(content$results)
   if (is.null(count)) {
@@ -48,11 +56,15 @@ append_results = function(
     }
   }
   next_url = content$`next`
-  while (!is.null(next_url)) {
-    next_gr = get_results(url = next_url,
-                          query = query, verbose = verbose, ...)
+  while (!is.null(next_url) && n_res <= max_count) {
+    next_gr = get_results(
+      url = next_url,
+      query = query,
+      verbose = verbose,
+      nonstop = TRUE, ...)
     next_cr = next_gr$content
     content$results = c(content$results, next_cr$results)
+    n_res = length(content$results)
     rm(list = "next_gr")
     next_url = next_cr$`next`
   }
