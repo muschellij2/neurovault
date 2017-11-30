@@ -1,3 +1,7 @@
+# neurovault 0.5.3
+
+* Fixed Title and Description in `DESCRIPTION` file for CRAN.
+
 # neurovault 0.5.2
 
 * Fixed a bug in `nv_collection` that caused all collections to be run if 

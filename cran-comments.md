@@ -14,3 +14,5 @@
 If the examples take > 5s (only 1-2), it is due to the speed of the API.  I can 
 maybe make a workaround for these, but will likely just add dontrun to these
 if necessary.
+
+Changed title and description.
