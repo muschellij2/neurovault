@@ -20,7 +20,8 @@
 #' the content
 #' @export
 #'
-#' @importFrom httr GET stop_for_status warn_for_status
+#' @importFrom httr GET stop_for_status warn_for_status content
+#' @importFrom xml2 read_html
 #' @examples
 #' res = nv_collection(doi = "10.1016/j.neurobiolaging.2012.11.002")
 #' res = nv_collection(name = "21 pain studies (NIDM-Results)")

@@ -1,5 +1,5 @@
 Package: neurovault
-Version: 0.5.4
+Version: 0.5.5
 Title: 'Neurovault' Database API Access
 Description: Uses 'Neurovault' API <https://neurovault.org/api-docs> to 
       download statistical maps of the human brain stored on that platform.
@@ -7,7 +7,8 @@ Authors@R: person(given = "John", family = "Muschelli",
         role = c("aut", "cre"), email = "muschellij2@gmail.com")
 License: GPL-3
 Imports:
-    httr
+    httr, 
+    xml2
 Suggests: 
     knitr,
     rmarkdown,
