@@ -1,3 +1,7 @@
+# neurovault 0.5.5
+
+* Fixed errors for CRAN.
+
 # neurovault 0.5.3
 
 * Fixed Title and Description in `DESCRIPTION` file for CRAN.
