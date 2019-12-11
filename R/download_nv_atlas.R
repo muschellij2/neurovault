@@ -121,7 +121,8 @@ download_nv_atlas = function(
       # fix for
       # https://github.com/jeroen/curl/issues/163#issuecomment-424661267
       # for https://neurostars.org/t/encoding-of-neurovault-curl-output/5576
-      httr::config(accept_encoding = "identity"),
+      # httr::config(accept_encoding = "identity"),
+      httr::add_headers('Accept-Encoding' = ""),
       ...)
     return(image_res)
   }, df$file, df$outfile, SIMPLIFY = FALSE)
