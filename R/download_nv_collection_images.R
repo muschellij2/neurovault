@@ -16,6 +16,10 @@
 #'
 #' if (.Platform$OS.type != "windows") {
 #'   res = download_nv_collection_images(id = 77, verbose = 2)
+#' } else {
+#' if (requireNamespace("curl", quietly = TRUE)) {
+#'    print(curl::curl_version())
+#' }
 #' }
 download_nv_collection_images = function(
   id,
