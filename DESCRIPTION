@@ -15,7 +15,8 @@ Suggests:
     covr,
     testthat,
     neurobase,
-    curl
+    curl,
+    crul
 Encoding: UTF-8
 LazyData: true
 ByteCompile: true

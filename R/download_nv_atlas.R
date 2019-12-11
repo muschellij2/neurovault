@@ -101,6 +101,19 @@ nv_atlas_df = function(verbose = TRUE, ...) {
 #' result = httr::GET(df$file[1])
 #' result
 #' res = download_nv_atlas(id = 1408, verbose = 2)
+#' } else {
+#' if (requireNamespace("crul", quietly = TRUE)) {
+#' url = "https://neurovault.org"
+#' path = "media/images/264/JHU-ICBM-labels-2mm.nii.gz"
+#' x <- crul::HttpClient$new(url = url)
+#' res <- x$get(path)
+#' res
+#' res$status_code
+#' outfile = file.path(tempdir(), basename(path))
+#' writeBin(res$content, outfile)
+#' stopifnot(length(res$content) == 9611L)
+#' # neurobase::readnii(outfile)
+#' }
 #' }
 #'
 download_nv_atlas = function(
