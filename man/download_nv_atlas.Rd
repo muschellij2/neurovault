@@ -33,13 +33,8 @@ Download Neurovault Atlas and Label file
 \examples{
 res = nv_atlas(id = 1408, verbose = TRUE)
 df = results_to_df(res$content$results)
-if (requireNamespace("curl", quietly = TRUE)) {
-r = curl::curl_fetch_memory(df$file[1],
-handle = curl::new_handle(verbose = TRUE,
-decode_content = FALSE))
-r = curl::curl_fetch_memory(df$file[1],
-handle = curl::new_handle(verbose = TRUE))
-}
-res = download_nv_atlas(id = 1408)
+res = download_nv_atlas(id = 1408, verbose = 2,
+httr::config(accept_encoding="identity"))
+res = download_nv_atlas(id = 1408, verbose = 2)
 
 }

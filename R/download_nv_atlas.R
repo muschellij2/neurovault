@@ -97,14 +97,9 @@ nv_atlas_df = function(verbose = TRUE, ...) {
 #' @examples
 #' res = nv_atlas(id = 1408, verbose = TRUE)
 #' df = results_to_df(res$content$results)
-#' if (requireNamespace("curl", quietly = TRUE)) {
-#' r = curl::curl_fetch_memory(df$file[1],
-#' handle = curl::new_handle(verbose = TRUE,
-#' decode_content = FALSE))
-#' r = curl::curl_fetch_memory(df$file[1],
-#' handle = curl::new_handle(verbose = TRUE))
-#' }
-#' res = download_nv_atlas(id = 1408)
+#' res = download_nv_atlas(id = 1408, verbose = 2,
+#' ... = httr::config(accept_encoding="identity"))
+#' res = download_nv_atlas(id = 1408, verbose = 2)
 #'
 download_nv_atlas = function(
   id,
@@ -123,7 +118,9 @@ download_nv_atlas = function(
     image_res = GET(
       url,
       httr::write_disk(path = outfile, overwrite = overwrite),
-      if (verbose) httr::progress())
+      if (verbose) httr::progress(),
+      if (verbose > 1) httr::verbose(),
+      ...)
     return(image_res)
   }, df$file, df$outfile, SIMPLIFY = FALSE)
   dl_results = lapply(dl_results, httr::warn_for_status)
