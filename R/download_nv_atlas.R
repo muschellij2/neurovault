@@ -97,8 +97,6 @@ nv_atlas_df = function(verbose = TRUE, ...) {
 #' @examples
 #' res = nv_atlas(id = 1408, verbose = TRUE)
 #' df = results_to_df(res$content$results)
-#' res = download_nv_atlas(id = 1408, verbose = 2,
-#' ... = httr::config(accept_encoding="identity"))
 #' res = download_nv_atlas(id = 1408, verbose = 2)
 #'
 download_nv_atlas = function(
@@ -115,11 +113,15 @@ download_nv_atlas = function(
   }
   df$outfile = file.path(outdir, basename(df$file))
   dl_results = mapply(function(url, outfile) {
-    image_res = GET(
+    image_res = httr::GET(
       url,
       httr::write_disk(path = outfile, overwrite = overwrite),
       if (verbose) httr::progress(),
       if (verbose > 1) httr::verbose(),
+      # fix for
+      # https://github.com/jeroen/curl/issues/163#issuecomment-424661267
+      # for https://neurostars.org/t/encoding-of-neurovault-curl-output/5576
+      httr::config(accept_encoding = "identity"),
       ...)
     return(image_res)
   }, df$file, df$outfile, SIMPLIFY = FALSE)

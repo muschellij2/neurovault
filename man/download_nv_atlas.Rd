@@ -33,8 +33,6 @@ Download Neurovault Atlas and Label file
 \examples{
 res = nv_atlas(id = 1408, verbose = TRUE)
 df = results_to_df(res$content$results)
-res = download_nv_atlas(id = 1408, verbose = 2,
-httr::config(accept_encoding="identity"))
 res = download_nv_atlas(id = 1408, verbose = 2)
 
 }
