@@ -12,7 +12,7 @@
 #'
 #' @importFrom httr GET write_disk progress status_code
 #' @examples
-#' res = download_nv_collection_images(id = 77)
+#' res = download_nv_collection_images(id = 77, verbose = 2)
 #'
 download_nv_collection_images = function(
   id,
@@ -23,15 +23,20 @@ download_nv_collection_images = function(
 
   res = nv_collection_images(id = id, verbose = verbose, ...)
   df = results_to_df(res$content$results)
+  if (verbose > 1) {
+    message(paste0(nrow(df), " files are trying to download"))
+  }
   if (!dir.exists(outdir)) {
     dir.create(outdir, recursive = TRUE)
   }
   df$outfile = file.path(outdir, basename(df$file))
   dl_results = mapply(function(url, outfile) {
-    image_res = GET(
+    image_res = httr::GET(
       url,
       httr::write_disk(path = outfile, overwrite = overwrite),
-      if (verbose) httr::progress())
+      if (verbose) httr::progress(),
+      if (verbose > 1) httr::verbose(),
+      ...)
     return(image_res)
   }, df$file, df$outfile, SIMPLIFY = FALSE)
   dl_results = lapply(dl_results, httr::warn_for_status)

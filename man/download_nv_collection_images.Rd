@@ -31,6 +31,6 @@ and their output filenames
 Download Neurovault Collections Images
 }
 \examples{
-res = download_nv_collection_images(id = 77)
+res = download_nv_collection_images(id = 77, verbose = 2)
 
 }
