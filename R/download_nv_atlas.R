@@ -100,6 +100,9 @@ nv_atlas_df = function(verbose = TRUE, ...) {
 #' if (requireNamespace("curl", quietly = TRUE)) {
 #' r = curl::curl_fetch_memory(df$file[1],
 #' handle = curl::new_handle(verbose = TRUE))
+#' r = curl::curl_fetch_memory(df$file[1],
+#' handle = curl::new_handle(verbose = TRUE,
+#' decode_content = FALSE))
 #' }
 #' res = download_nv_atlas(id = 1408)
 #'
