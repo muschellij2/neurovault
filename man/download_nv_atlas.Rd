@@ -4,8 +4,13 @@
 \alias{download_nv_atlas}
 \title{Download Neurovault Atlas and Label file}
 \usage{
-download_nv_atlas(id, verbose = TRUE, outdir = tempfile(),
-  overwrite = TRUE, ...)
+download_nv_atlas(
+  id,
+  verbose = TRUE,
+  outdir = tempfile(),
+  overwrite = TRUE,
+  ...
+)
 }
 \arguments{
 \item{id}{id of the atlas}
@@ -26,6 +31,10 @@ and their output filenames
 Download Neurovault Atlas and Label file
 }
 \examples{
+res = nv_atlas(id = 1408, verbose = TRUE)
+df = results_to_df(res$content$results)
+r = curl::curl_fetch_memory(df$file[1],
+handle = curl::new_handle(verbose = TRUE))
 res = download_nv_atlas(id = 1408)
 
 }

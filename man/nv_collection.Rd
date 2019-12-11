@@ -4,8 +4,16 @@
 \alias{nv_collection}
 \title{Neurovault Collections}
 \usage{
-nv_collection(id = NULL, doi = NULL, owner = NULL, name = NULL,
-  verbose = TRUE, secure = TRUE, max_count = Inf, ...)
+nv_collection(
+  id = NULL,
+  doi = NULL,
+  owner = NULL,
+  name = NULL,
+  verbose = TRUE,
+  secure = TRUE,
+  max_count = Inf,
+  ...
+)
 }
 \arguments{
 \item{id}{id of the collection}

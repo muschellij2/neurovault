@@ -1,6 +1,6 @@
 ---
 title: "Neurovault API"
-author: "Vignette Author"
+author: "John Muschelli"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 
 
 The NeuroVault database (https://neurovault.org/) is a:
+
 > place where researchers can publicly store and share unthresholded statistical maps, parcellations, and atlases produced by MRI and PET studies.
 
 This allows researchers to compare results from multiple studies.

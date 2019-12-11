@@ -95,6 +95,10 @@ nv_atlas_df = function(verbose = TRUE, ...) {
 #' @export
 #'
 #' @examples
+#' res = nv_atlas(id = 1408, verbose = TRUE)
+#' df = results_to_df(res$content$results)
+#' r = curl::curl_fetch_memory(df$file[1],
+#' handle = curl::new_handle(verbose = TRUE))
 #' res = download_nv_atlas(id = 1408)
 #'
 download_nv_atlas = function(

@@ -23,5 +23,4 @@ Maintainer: John Muschelli <muschellij2@gmail.com>
 VignetteBuilder: knitr
 URL: https://github.com/muschellij2/neurovault
 BugReports: https://github.com/muschellij2/neurovault/issues
-RoxygenNote: 6.0.1
-
+RoxygenNote: 7.0.1

@@ -4,8 +4,14 @@
 \alias{nv_images}
 \title{Neurovault Images}
 \usage{
-nv_images(id = NULL, verbose = TRUE, secure = TRUE, limit = 100,
-  offset = 0, ...)
+nv_images(
+  id = NULL,
+  verbose = TRUE,
+  secure = TRUE,
+  limit = 100,
+  offset = 0,
+  ...
+)
 }
 \arguments{
 \item{id}{id of the collection}
