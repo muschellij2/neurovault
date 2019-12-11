@@ -97,9 +97,9 @@ nv_atlas_df = function(verbose = TRUE, ...) {
 #' @examples
 #' res = nv_atlas(id = 1408, verbose = TRUE)
 #' df = results_to_df(res$content$results)
+#' if (.Platform$OS.type != "windows") {
 #' result = httr::GET(df$file[1])
 #' result
-#' if (.Platform$OS.type != "windows") {
 #' res = download_nv_atlas(id = 1408, verbose = 2)
 #' }
 #'
