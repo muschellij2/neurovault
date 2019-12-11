@@ -4,8 +4,7 @@
 \alias{nv_collection_id}
 \title{Retrieve Neurovault Collections ID}
 \usage{
-nv_collection_id(doi = NULL, owner = NULL, name = NULL, verbose = TRUE,
-  ...)
+nv_collection_id(doi = NULL, owner = NULL, name = NULL, verbose = TRUE, ...)
 }
 \arguments{
 \item{doi}{Digital Object Identifier (DOI) for the project or collection}

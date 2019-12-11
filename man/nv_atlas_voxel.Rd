@@ -4,8 +4,16 @@
 \alias{nv_atlas_voxel}
 \title{Neurovault Atlas Query Voxel}
 \usage{
-nv_atlas_voxel(x, y, z, collection_name, atlas_name, verbose = TRUE,
-  secure = TRUE, ...)
+nv_atlas_voxel(
+  x,
+  y,
+  z,
+  collection_name,
+  atlas_name,
+  verbose = TRUE,
+  secure = TRUE,
+  ...
+)
 }
 \arguments{
 \item{x}{x-coordinate to query}

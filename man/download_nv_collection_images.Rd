@@ -4,8 +4,13 @@
 \alias{download_nv_collection_images}
 \title{Download Neurovault Collections Images}
 \usage{
-download_nv_collection_images(id, verbose = TRUE, outdir = tempfile(),
-  overwrite = TRUE, ...)
+download_nv_collection_images(
+  id,
+  verbose = TRUE,
+  outdir = tempfile(),
+  overwrite = TRUE,
+  ...
+)
 }
 \arguments{
 \item{id}{id of the collection}

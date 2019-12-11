@@ -4,8 +4,14 @@
 \alias{nv_atlas_region}
 \title{Neurovault Query Atlas Region}
 \usage{
-nv_atlas_region(region, collection_name, atlas_name, verbose = TRUE,
-  secure = TRUE, ...)
+nv_atlas_region(
+  region,
+  collection_name,
+  atlas_name,
+  verbose = TRUE,
+  secure = TRUE,
+  ...
+)
 }
 \arguments{
 \item{region}{Region to search or query on}
