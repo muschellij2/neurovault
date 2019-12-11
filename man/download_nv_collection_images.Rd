@@ -31,6 +31,9 @@ and their output filenames
 Download Neurovault Collections Images
 }
 \examples{
-res = download_nv_collection_images(id = 77, verbose = 2)
+res = nv_collection_images(id = 77)
 
+if (.Platform$OS.type != "windows") {
+  res = download_nv_collection_images(id = 77, verbose = 2)
+}
 }

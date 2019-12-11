@@ -12,8 +12,11 @@
 #'
 #' @importFrom httr GET write_disk progress status_code
 #' @examples
-#' res = download_nv_collection_images(id = 77, verbose = 2)
+#' res = nv_collection_images(id = 77)
 #'
+#' if (.Platform$OS.type != "windows") {
+#'   res = download_nv_collection_images(id = 77, verbose = 2)
+#' }
 download_nv_collection_images = function(
   id,
   verbose = TRUE,

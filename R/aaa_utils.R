@@ -25,7 +25,9 @@ bind_list = function(L) {
 get_results = function(
   url, query = list(),
   verbose = TRUE, nonstop = FALSE, ...) {
-  res = httr::GET(url, query = query, ...)
+  res = httr::GET(url, query = query,
+                  if (verbose > 1) httr::verbose(),
+                  ...)
   if (verbose) {
     message("GET command is:")
     print(res)
