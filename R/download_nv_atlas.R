@@ -1,3 +1,16 @@
+download_image_file = function(file, destfile, verbose = TRUE) {
+  handle = curl::new_handle()
+  if (verbose) {
+    handle = curl::handle_setopt(handle, verbose = verbose)
+  }
+  z = curl::curl_fetch_memory(
+    file,
+    handle = handle
+  )
+  writeBin(z$content, con = destfile, useBytes = TRUE)
+  return(z)
+}
+
 #' @title Neurovault Atlases
 #'
 #' @description Returns a  list of dictionaries with information corresponding
@@ -18,10 +31,10 @@
 #' res = nv_atlas()
 #' df = results_to_df(res$content$results)
 nv_atlas = function(
-  id = NULL,
-  verbose = TRUE,
-  secure = TRUE,
-  ...) {
+    id = NULL,
+    verbose = TRUE,
+    secure = TRUE,
+    ...) {
 
   url = nv_base_url(secure = secure)
   path = "/atlases"
@@ -98,22 +111,20 @@ nv_atlas_df = function(verbose = TRUE, ...) {
 #' res = nv_atlas(id = 1408, verbose = TRUE)
 #' df = results_to_df(res$content$results)
 #' if (.Platform$OS.type != "windows") {
-#' result = httr::GET(df$file[1])
-#' result
-#' res = download_nv_atlas(id = 1408, verbose = 2)
+#'   res = download_nv_atlas(id = 1408, verbose = 2)
 #' } else {
 #'
-#' if (requireNamespace("curl", quietly = TRUE)) {
-#'    print(curl::curl_version())
-#' }
+#'   if (requireNamespace("curl", quietly = TRUE)) {
+#'      print(curl::curl_version())
+#'   }
 #' }
 #'
 download_nv_atlas = function(
-  id,
-  verbose = TRUE,
-  outdir = tempfile(),
-  overwrite = TRUE,
-  ...) {
+    id,
+    verbose = TRUE,
+    outdir = tempfile(),
+    overwrite = TRUE,
+    ...) {
 
   res = nv_atlas(id = id, verbose = verbose, ...)
   df = results_to_df(res$content$results)
@@ -122,6 +133,8 @@ download_nv_atlas = function(
   }
   df$outfile = file.path(outdir, basename(df$file))
   dl_results = mapply(function(url, outfile) {
+    # image_res = download_image_file(url, outfile, verbose = verbose > 1)
+
     image_res = httr::GET(
       url,
       httr::write_disk(path = outfile, overwrite = overwrite),
@@ -135,9 +148,10 @@ download_nv_atlas = function(
       ...)
     return(image_res)
   }, df$file, df$outfile, SIMPLIFY = FALSE)
-  dl_results = lapply(dl_results, httr::warn_for_status)
-  status_codes = sapply(dl_results, httr::status_code)
-  df$dl_status_code = status_codes
+
+  # dl_results = lapply(dl_results, httr::warn_for_status)
+  # status_codes = sapply(dl_results, httr::status_code)
+  # df$dl_status_code = status_codes
 
   # downloading label description file
   df$label_description_outfile = file.path(
