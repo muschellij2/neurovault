@@ -2,9 +2,10 @@
 output: github_document
 ---
 
-[![Travis build status](https://travis-ci.org/muschellij2/neurovault.svg?branch=master)](https://travis-ci.org/muschellij2/neurovault)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/muschellij2/neurovault?branch=master&svg=true)](https://ci.appveyor.com/project/muschellij2/neurovault)
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/muschellij2/neurovault/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/muschellij2/neurovault/actions/workflows/R-CMD-check.yaml)
 [![Coverage status](https://coveralls.io/repos/github/muschellij2/neurovault/badge.svg?branch=master)](https://coveralls.io/r/muschellij2/neurovault?branch=master)
+<!-- badges: end -->
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r setup, include = FALSE}
